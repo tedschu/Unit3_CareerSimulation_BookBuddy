@@ -4,13 +4,23 @@ You may consider conditionally rendering some options - for example 'Login' shou
 if someone has not logged in yet. */
 
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook } from "@fortawesome/free-solid-svg-icons/faBook";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 function Nav() {
-  const token = localStorage.getItem("token");
+  const [token, setToken] = useState(false);
+
+  console.log(token);
+
+  useEffect(() => {
+    const hasToken = localStorage.getItem("token");
+    console.log(hasToken);
+    hasToken && setToken(true);
+  }, [token]);
+
+  // const token = localStorage.getItem("token");
 
   return (
     <>

@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SingleBook from "./SingleBook";
 import { Route, Routes } from "react-router-dom";
+import Checkout from "../components/Checkout";
 
 function Books() {
   const [books, setBooks] = useState([]);
@@ -32,7 +33,7 @@ function Books() {
 
   const booksList = books;
 
-  //console.log(books);
+  console.log(books);
 
   return (
     <>
@@ -51,7 +52,7 @@ function Books() {
               <Link className="link" to={"books/" + book.id}>
                 <button>See details</button>
               </Link>
-              {token && <button>Check out</button>}
+              <Checkout book={book.id} />
             </div>
           </div>
         ))}

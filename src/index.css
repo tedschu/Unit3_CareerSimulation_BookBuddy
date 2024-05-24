@@ -194,3 +194,31 @@ h2 {
   color: red;
   font-size: 18px;
 }
+
+/* STYLING FOR ACCOUNT PAGE */
+.accountWrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.accountBox {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  width: 60%;
+  min-width: 350px;
+  border: 1px solid lightgray;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  border-radius: 8px;
+  background: rgb(230, 237, 255);
+  padding-bottom: 20px;
+}
+
+.accountBox > ul {
+  text-align: left;
+}

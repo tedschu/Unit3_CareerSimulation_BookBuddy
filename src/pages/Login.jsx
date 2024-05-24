@@ -61,7 +61,7 @@ function Login() {
       .catch(console.error);
   }
 
-  console.log(loginError);
+  //console.log(loginError);
   return (
     <>
       {!token ? (

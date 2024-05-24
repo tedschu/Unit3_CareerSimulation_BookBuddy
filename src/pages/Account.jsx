@@ -5,6 +5,7 @@ for other users that prompts them to log in or create an account.  */
 // Can use localStorage.removeItem() to power a log out button (if needed)
 import { useState, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import Checkin from "../components/Checkin";
 
 function Account() {
   const [user, setUser] = useState({});
@@ -25,13 +26,13 @@ function Account() {
       )
         .then((response) => response.json())
         .then((result) => {
-          console.log(result);
+          //console.log(result);
           setUser(result);
         })
         .catch(console.error);
     }
     getAccountInfo();
-    //console.log(user);
+    console.log(user);
   }, []);
 
   function logout() {
@@ -39,20 +40,36 @@ function Account() {
     navigate("/login");
   }
 
+  // FUNCTION TO HANDLE THE ARRAY OF BOOK OBJECTS
+
+  const userBooks = user.books;
+  console.log(user.books);
+
   return (
     <>
-      <div className="accountWrap">
-        <h1>Welcome back, {user.firstname}</h1>;
-        <h3>Here's your account information:</h3>
-        <ul>
-          <li>
-            Name: {user.firstname} {user.lastname}
-          </li>
-          <li>Email: {user.email}</li>
-
-          <li>Books: {user.books}</li>
-        </ul>
-        <button onClick={logout}>Sign out</button>
+      <div className="accountWrapper">
+        <div className="accountBox">
+          <h1>Welcome back, {user.firstname}!</h1>;
+          <h3>Here's your account information:</h3>
+          <ul>
+            <li>
+              Name: {user.firstname} {user.lastname}
+            </li>
+            <li>Email: {user.email}</li>
+          </ul>
+          <div className="userBooks">
+            <h2>Your books:</h2>
+            {userBooks &&
+              userBooks.map((book) => (
+                <div className="userBooksWrapper" key={book.id}>
+                  <h2>{book.title}</h2>
+                  <h3>By {book.author}</h3>
+                  <p>check back in button</p>
+                </div>
+              ))}
+          </div>
+          <button onClick={logout}>Sign out</button>
+        </div>
       </div>
     </>
   );

@@ -8,6 +8,7 @@ import Account from "./pages/Account";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import SingleBook from "./pages/SingleBook";
+import Checkout from "./components/Checkout";
 
 function App() {
   //const [token, setToken] = useState(null);

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Books from "./Books";
 import { Link } from "react-router-dom";
+import Checkout from "../components/Checkout";
 
 function SingleBook() {
   const [book, setBook] = useState([]);
@@ -29,6 +30,12 @@ function SingleBook() {
     getSingleBook();
   }, []);
 
+  //  FUNCTION TO PASS ID AS PROPS / PARAMS TO "CHECKOUT" COMPONENT
+  const handleCheckout = () => {
+    <Checkout book={book.id} />;
+    console.log(book.id);
+  };
+
   return (
     <>
       <div className="contentWrapper">
@@ -46,7 +53,7 @@ function SingleBook() {
             <Link className="link" to={"/"}>
               <button>Go back</button>
             </Link>
-            {token && <button>Check out</button>}
+            <Checkout book={book.id} />
           </div>
         </div>
       </div>

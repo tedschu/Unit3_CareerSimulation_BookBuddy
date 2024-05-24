@@ -1,6 +1,7 @@
 /* TODO - add your code to create a functional React component that renders a registration form */
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [form, setForm] = useState({
@@ -9,6 +10,8 @@ function Register() {
     email: "ssmithhjg@example.com",
     password: "sam345",
   });
+
+  const navigate = useNavigate();
 
   // SUBMIT BUTTON
   const submit = (event) => {
@@ -47,6 +50,7 @@ function Register() {
         console.log(result);
         console.log(result.token);
         localStorage.setItem("token", result.token); // SETS TOKEN TO LOCALSTORAGE IN BROWSER
+        navigate("/");
       })
       .catch(console.error);
   }
