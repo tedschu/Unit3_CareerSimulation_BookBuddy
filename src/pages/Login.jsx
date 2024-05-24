@@ -12,6 +12,8 @@ function Login() {
     password: "sam345",
   });
 
+  const [loginError, setloginError] = useState(false);
+
   const navigate = useNavigate();
 
   // SUBMIT BUTTON
@@ -48,12 +50,18 @@ function Login() {
       .then((result) => {
         console.log(result);
         console.log(result.token);
-        localStorage.setItem("token", result.token); // SETS TOKEN TO LOCALSTORAGE IN BROWSER
-        navigate("/"); // SSHOULD SEND USER BACK TO BOOKS LISTING PAGE (ALSO RENDER A LOGIN COMMENT)
+        if (!result.token) {
+          setloginError(true);
+        } else {
+          localStorage.setItem("token", result.token); // SETS TOKEN TO LOCALSTORAGE IN BROWSER
+          navigate("/");
+          setloginError(false);
+        }
       })
       .catch(console.error);
   }
 
+  console.log(loginError);
   return (
     <>
       {!token ? (
@@ -71,6 +79,11 @@ function Login() {
                 <input type="password" name={"password"} onChange={setChange} />
               </label>
               <input id={"submit"} type="submit" value={"Log in"} />
+              {loginError && (
+                <h3 className="loginError">
+                  Your login or password is incorrect
+                </h3>
+              )}
             </form>
           </div>
 
