@@ -51,9 +51,9 @@ function SingleBook() {
           )}
           <div className="buttonWrapper">
             <Link className="link" to={"/"}>
-              <button>Go back</button>
+              <button className="border_button">Go back</button>
             </Link>
-            <Checkout book={book.id} />
+            {book.available && <Checkout book={book.id} />}
           </div>
         </div>
       </div>

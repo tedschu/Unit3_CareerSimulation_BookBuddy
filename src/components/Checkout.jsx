@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 // import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Checkout({ book }) {
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   //   const handleCheckout = () => {
   //     console.log(book);
@@ -26,7 +28,7 @@ function Checkout({ book }) {
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
-        navigate("/");
+        navigate("/myaccount");
       })
       .catch(console.error);
   }

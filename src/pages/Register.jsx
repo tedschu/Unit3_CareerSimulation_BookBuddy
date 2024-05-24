@@ -78,7 +78,12 @@ function Register() {
               Password: <br></br>
               <input type="password" name={"password"} onChange={setChange} />
             </label>
-            <input id={"submit"} type="submit" value={"Create account"} />
+            <input
+              id={"submit"}
+              type="submit"
+              value={"Create account"}
+              className="border_button"
+            />
           </form>
         </div>
       </div>

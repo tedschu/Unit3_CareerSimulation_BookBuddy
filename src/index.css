@@ -9,6 +9,31 @@
   font-weight: normal;
 }
 
+button {
+  border: none;
+  font-size: 14px;
+  color: white;
+  background: rgb(0, 21, 69);
+  border-radius: 3px;
+  min-width: 120px;
+  height: 30px;
+  font-family: Raleway;
+}
+
+.border_button {
+  background: white;
+  border: 1px solid rgb(0, 21, 69);
+  color: rgb(0, 21, 69);
+  font-family: Raleway;
+}
+
+.red_button {
+  background: white;
+  border: 1px solid rgb(69, 0, 0);
+  color: rgb(69, 0, 0);
+  font-family: Raleway;
+}
+
 body {
   font-family: Raleway;
   background-color: white;
@@ -221,4 +246,27 @@ h2 {
 
 .accountBox > ul {
   text-align: left;
+}
+
+.userBooks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.userBooksWrapper {
+  border: 1px solid rgb(0, 21, 69);
+  border-radius: 8px;
+  min-width: 250px;
+  background-color: white;
+  padding: 10px;
+}
+
+.accountButtons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
 }

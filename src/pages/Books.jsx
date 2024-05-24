@@ -50,9 +50,9 @@ function Books() {
             )}
             <div className="buttonWrapper">
               <Link className="link" to={"books/" + book.id}>
-                <button>See details</button>
+                <button className="border_button">See details</button>
               </Link>
-              <Checkout book={book.id} />
+              {book.available && <Checkout book={book.id} />}
             </div>
           </div>
         ))}

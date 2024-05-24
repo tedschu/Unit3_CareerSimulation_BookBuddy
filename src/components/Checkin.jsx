@@ -1,26 +1,29 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 // import { useParams } from "react-router-dom";
+import Reservations from "./Reservations";
+import { useNavigate } from "react-router-dom";
 
-function Checkin({ book }) {
+function Checkin({ resId }) {
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   //   const handleCheckout = () => {
   //     console.log(book);
   //   };
 
+  console.log(resId);
+
   async function runCheckin() {
     const response = await fetch(
-      "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books/" + book,
+      "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations/" +
+        resId,
       {
-        method: "PATCH",
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({
-          available: false,
-        }),
       }
     )
       .then((response) => response.json())
@@ -31,7 +34,11 @@ function Checkin({ book }) {
       .catch(console.error);
   }
 
-  return <>{token && <button onClick={runCheckout}>Check out</button>}</>;
+  return (
+    <>
+      <button onClick={runCheckin}>Check back in</button>
+    </>
+  );
 }
 
 export default Checkin;

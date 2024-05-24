@@ -9,10 +9,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook } from "@fortawesome/free-solid-svg-icons/faBook";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 
-function Nav() {
+function Nav({ login }) {
   const [token, setToken] = useState(false);
+  const [signedIn, setSignedIn] = useState(false);
 
-  console.log(token);
+  console.log(login);
 
   useEffect(() => {
     const hasToken = localStorage.getItem("token");
@@ -30,7 +31,7 @@ function Nav() {
         </Link>
         <div className="navLinks">
           <Link to={"/login"} className="logos">
-            {!token && <h3>Log in / create account to check out books</h3>}
+            {!signedIn && <h3>Log in / create account to check out books</h3>}
 
             <FontAwesomeIcon icon={faUser} size={"2x"} />
           </Link>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Account from "./Account";
 import { useNavigate } from "react-router-dom";
+import Nav from "../components/Nav";
 
 function Login() {
   const token = localStorage.getItem("token");
@@ -31,6 +32,9 @@ function Login() {
     console.log(form);
   };
 
+  // PASSES LOGIN SUCCESS STATE TO NAV BAR NOTIFICATION
+  function userLoggedIn() {}
+
   // PUSHES FORM DATA TO API
   async function loginCheck(form) {
     const response = await fetch(
@@ -50,6 +54,7 @@ function Login() {
       .then((result) => {
         console.log(result);
         console.log(result.token);
+        <Nav login={true} />;
         if (!result.token) {
           setloginError(true);
         } else {
@@ -78,7 +83,12 @@ function Login() {
                 Password: <br></br>
                 <input type="password" name={"password"} onChange={setChange} />
               </label>
-              <input id={"submit"} type="submit" value={"Log in"} />
+              <input
+                className="border_button"
+                id={"submit"}
+                type="submit"
+                value={"Log in"}
+              />
               {loginError && (
                 <h3 className="loginError">
                   Your login or password is incorrect
