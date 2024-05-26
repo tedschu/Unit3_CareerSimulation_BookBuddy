@@ -1,7 +1,3 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
-import Reservations from "./Reservations";
 import { useNavigate } from "react-router-dom";
 
 function Checkin({ resId }) {

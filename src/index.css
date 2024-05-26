@@ -65,6 +65,10 @@ nav {
   left: 0;
 }
 
+.navLinks {
+  display: flex;
+}
+
 .navLinks > a {
   font-size: 12px;
   text-decoration: none;
@@ -124,6 +128,21 @@ h2 {
   width: 250px;
   max-height: 350px;
   border-radius: 6px;
+}
+
+.searchBar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+.searchBar > input {
+  width: 300px;
+  border: 2px solid rgb(0, 21, 69);
+  border-radius: 9px;
+  height: 30px;
+  font-family: Raleway;
 }
 
 /* Styling for single book */

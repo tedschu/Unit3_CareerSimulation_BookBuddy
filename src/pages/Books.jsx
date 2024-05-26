@@ -5,12 +5,15 @@ Users should be able to click on an individual book to navigate to the SingleBoo
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import SingleBook from "./SingleBook";
-import { Route, Routes } from "react-router-dom";
 import Checkout from "../components/Checkout";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Books() {
   const [books, setBooks] = useState([]);
+  const [value, setValue] = useState("");
+  const [filteredBooks, setFilteredBooks] = useState([]);
+  const [noSearchResults, setNoSearchResults] = useState(false);
 
   const token = localStorage.getItem("token"); // CHECK OUT BUTTON REFERENCES THIS
 
@@ -27,18 +30,48 @@ function Books() {
       );
       const data = await response.json();
       setBooks(data.books);
+      setFilteredBooks(data.books);
     }
     getAllBooks();
   }, []);
 
-  const booksList = books;
+  //const booksList = books;  //had initially used this as the array to map
 
-  console.log(books);
+  // USEEFFECT ONLY RUNS WHEN THERE ARE STATE CHANGES IN DEPENDENCY STATES (BOOKS, VALUE)
+  // WHEN IT RUNS, IT UPDATES THE STATE FILTEREDBOOKS TO BE THE SEARCH-FILTERED ARRAY
+  useEffect(() => {
+    const searchResultArray = books.filter((book) =>
+      book.title.toLowerCase().includes(value.toLowerCase())
+    );
+    console.log(searchResultArray);
 
+    setFilteredBooks(searchResultArray);
+
+    searchResultArray.length === 0 && setNoSearchResults(true); // TRIGGERS "NO RESULTS" TEXT BASED ON WHETHER RESULT ARRAY IS EMPTY OR NOT
+    searchResultArray.length > 0 && setNoSearchResults(false);
+  }, [value]);
+
+  // SEARCH BAR RESULTS
+  const setResults = (e) => {
+    setValue(e.target.value);
+    console.log(value);
+  };
+
+  //console.log(books);
+
+  console.log(noSearchResults);
   return (
     <>
       <div className="contentWrapper">
-        {booksList.map((book) => (
+        <div className="searchBar">
+          <input
+            type="text"
+            placeholder="Search for a book..."
+            onChange={setResults}
+          />
+        </div>
+        {noSearchResults && <h2>There are no books that match your search</h2>}
+        {filteredBooks.map((book) => (
           <div className="bookWrapper" key={book.id}>
             <h1>{book.title}</h1>
             <h2>By {book.author}</h2>

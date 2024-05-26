@@ -5,7 +5,6 @@ for other users that prompts them to log in or create an account.  */
 // Can use localStorage.removeItem() to power a log out button (if needed)
 import { useState, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import Checkin from "../components/Checkin";
 import Reservations from "../components/Reservations";
 import { Link } from "react-router-dom";
 

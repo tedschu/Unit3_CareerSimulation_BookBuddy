@@ -8,20 +8,20 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook } from "@fortawesome/free-solid-svg-icons/faBook";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-function Nav({ login }) {
+function Nav() {
   const [token, setToken] = useState(false);
   const [signedIn, setSignedIn] = useState(false);
+  // const [value, setValue] = useState("");
 
-  console.log(login);
+  //console.log(login);
 
   useEffect(() => {
     const hasToken = localStorage.getItem("token");
-    console.log(hasToken);
+    //console.log(hasToken);
     hasToken && setToken(true);
   }, [token]);
-
-  // const token = localStorage.getItem("token");
 
   return (
     <>
@@ -31,9 +31,11 @@ function Nav({ login }) {
         </Link>
         <div className="navLinks">
           <Link to={"/login"} className="logos">
-            {!signedIn && <h3>Log in / create account to check out books</h3>}
-
+            {!token && <h3>Log in / create account to check out books</h3>}
             <FontAwesomeIcon icon={faUser} size={"2x"} />
+          </Link>
+          <Link to={"/"} className="logos">
+            <FontAwesomeIcon icon={faMagnifyingGlass} size={"2x"} />
           </Link>
         </div>
       </nav>
