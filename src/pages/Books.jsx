@@ -49,12 +49,12 @@ function Books() {
 
     searchResultArray.length === 0 && setNoSearchResults(true); // TRIGGERS "NO RESULTS" TEXT BASED ON WHETHER RESULT ARRAY IS EMPTY OR NOT
     searchResultArray.length > 0 && setNoSearchResults(false);
-  }, [value]);
+  }, [value, books]);
 
   // SEARCH BAR RESULTS
   const setResults = (e) => {
     setValue(e.target.value);
-    console.log(value);
+    //console.log(value);
   };
 
   //console.log(books);
@@ -63,12 +63,19 @@ function Books() {
   return (
     <>
       <div className="contentWrapper">
-        <div className="searchBar">
-          <input
-            type="text"
-            placeholder="Search for a book..."
-            onChange={setResults}
-          />
+        <div className="searchWrap">
+          <div className="searchBar">
+            <FontAwesomeIcon
+              icon={faMagnifyingGlass}
+              size={"1x"}
+              className="searchIcon"
+            />
+            <input
+              type="text"
+              placeholder="Search for a book..."
+              onChange={setResults}
+            />
+          </div>
         </div>
         {noSearchResults && <h2>There are no books that match your search</h2>}
         {filteredBooks.map((book) => (

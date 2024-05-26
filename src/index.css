@@ -82,6 +82,11 @@ nav {
   gap: 14px;
 }
 
+.siteName {
+  font-size: 32px;
+  font-weight: bold;
+}
+
 /* CONTENT AND WRAPPERS */
 .contentWrapper {
   display: flex;
@@ -130,19 +135,40 @@ h2 {
   border-radius: 6px;
 }
 
-.searchBar {
+.searchWrap {
   width: 100%;
   display: flex;
   justify-content: center;
   padding-bottom: 15px;
 }
 
+.searchBar {
+  display: flex;
+  width: 400px;
+  border: 2px solid rgb(81, 117, 190);
+
+  border-radius: 8px;
+  align-items: center;
+  padding: 8px;
+}
+
 .searchBar > input {
   width: 300px;
-  border: 2px solid rgb(0, 21, 69);
+  /* border: 2px solid rgb(0, 21, 69); */
+  border: none;
   border-radius: 9px;
   height: 30px;
   font-family: Raleway;
+  padding-left: 10px;
+  font-size: 18px;
+}
+
+.searchBar > input:focus {
+  outline: none;
+}
+
+.searchIcon {
+  color: rgb(81, 117, 190);
 }
 
 /* Styling for single book */
