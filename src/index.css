@@ -56,9 +56,11 @@ nav {
   height: 70px;
   width: 100%;
   background: white;
-  display: flex;
+  display: grid;
+  grid-template-columns: [first] 25% [line2] 50% [line3] 25%;
+  /* display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; */
   /* padding: 0 15px; */
   position: fixed;
   top: 0;
@@ -67,6 +69,7 @@ nav {
 
 .navLinks {
   display: flex;
+  justify-content: right;
 }
 
 .navLinks > a {
@@ -86,6 +89,9 @@ nav {
   font-size: 32px;
   font-weight: bold;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* CONTENT AND WRAPPERS */
