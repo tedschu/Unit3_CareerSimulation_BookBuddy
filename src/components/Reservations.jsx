@@ -31,7 +31,11 @@ function Reservations() {
   return (
     <>
       <div className="userBooks">
-        <h3>Here are the books you have checked out:</h3>
+        {books.length > 0 ? (
+          <h3>Here are the books you have checked out:</h3>
+        ) : (
+          <h3>You have no books checked out right now</h3>
+        )}
         {books &&
           books.map((book) => (
             <div className="userBooksWrapper" key={book.id}>

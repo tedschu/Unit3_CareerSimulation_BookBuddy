@@ -98,7 +98,7 @@ function Login() {
           </div>
 
           <Link to={"/register"}>
-            <h3>Don't have an account? Create one now!</h3>
+            <h3>Don't have an account? Create one now to check out books!</h3>
           </Link>
         </div>
       ) : (

@@ -32,7 +32,6 @@ function Nav() {
         <div className="siteName">BookBuddy</div>
         <div className="navLinks">
           <Link to={"/login"} className="logos">
-            {!token && <h3>Log in / create account to check out books</h3>}
             <FontAwesomeIcon icon={faUser} size={"2x"} />
           </Link>
           <Link to={"/"} className="logos">
